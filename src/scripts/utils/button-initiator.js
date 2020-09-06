@@ -1,5 +1,5 @@
 const buttonInitiator = () => {
-  const buttons = document.querySelectorAll('.button');
+  const buttons = document.querySelectorAll('#button');
   const contents = document.querySelectorAll('.content');
 
   const handleClick = (e) => {

@@ -1,5 +1,5 @@
 import RestaurantSource from '../../data/restaurant-source';
-import createMenuItemTemplate from '../templates/template-creator';
+import { createMenuItemTemplate, createButtonTemplate } from '../templates/template-creator';
 import buttonInitiator from '../../utils/button-initiator';
 
 const Home = {
@@ -9,17 +9,7 @@ const Home = {
       <h2>Location</h2>
       <p>Browse all the location</p>
       <div class="button_list_inner ">
-        <button class="button all active_btn" >All</button>
-        <button class="button" data-name="Gorontalo">Gorontalo</button>
-        <button class="button" data-name="Bali">Bali</button>
-        <button class="button"data-name="Samarinda">Samarinda</button>
-        <button class="button" data-name="Aceh">Aceh</button>
-        <button class="button" data-name="Ternate">Ternate</button>
-        <button class="button" data-name="Surabaya">Surabaya</button>
-        <button class="button" data-name="Balikpapan">Balikpapan</button>
-        <button class="button" data-name="Medan">Medan</button>
-        <button class="button" data-name="Bandung">Bandung</button>
-        <button class="button" data-name="Malang">Malang</button>
+      <button id="button" class="button all active_btn" >All</button>
       </div>
     </section>
     <hr class="container">
@@ -41,11 +31,18 @@ const Home = {
     const restaurantContainer = document.querySelector('#restaurants');
     const loader = document.querySelector('.loader');
     loader.classList.add('hide');
-    // restaurantContainer.innerHTML += createMenuItemTemplate(restaurants);
+    console.log(restaurants);
+    const buttonContainer = document.querySelector('.button_list_inner');
+
     restaurants.forEach((restaurant) => {
       restaurantContainer.innerHTML += createMenuItemTemplate(restaurant);
     });
+    const restaurantCity = restaurants.map((restaurant) => restaurant.city);
+    const uniqueCity = [...new Set(restaurantCity)];
 
+    uniqueCity.forEach((city) => {
+      buttonContainer.innerHTML += createButtonTemplate(city);
+    });
     buttonInitiator();
   },
 };
