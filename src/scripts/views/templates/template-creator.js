@@ -7,13 +7,18 @@ import foodIcon from '../../../assets/food.svg';
 import drinkIcon from '../../../assets/drink.svg';
 import menuFoodIcon from '../../../assets/menufood.svg';
 import menuDrinkIcon from '../../../assets/menudrink.svg';
+import avatarIcon from '../../../assets/avatar.svg';
 
 const createButtonTemplate = (city) => ` 
 <button id="button" class="button" data-name=${city}>${city}</button>`;
 
-const createMenuItemTemplate = (restaurant) => `<div class="content hide active" data-name=${restaurant.city}>
+const createMenuItemTemplate = (restaurant) => `<div class="content hide active" data-name=${
+  restaurant.city
+}>
     <div class="content__inner ">
-      <div class="content__img" style="background: url(${CONFIG.BASE_IMAGE_URL}small/${restaurant.pictureId});background-position: center;"> 
+      <div class="content__img" style="background: url(${CONFIG.BASE_IMAGE_URL}small/${
+  restaurant.pictureId
+});background-position: center;"> 
       </div>
       <div class="content__details">
         <div class="content__place">
@@ -25,10 +30,16 @@ const createMenuItemTemplate = (restaurant) => `<div class="content hide active"
           <span>${restaurant.rating}</span>
         </div>
         <div class="content__name">
-          <h1>${restaurant.name.length > 9 ? `${restaurant.name.slice(0, 9)} ...` : restaurant.name}</h1>
+          <h1>${
+            restaurant.name.length > 9 ? `${restaurant.name.slice(0, 9)} ...` : restaurant.name
+          }</h1>
         </div>
         <div class="content__desc">
-          <p>${restaurant.description.length > 20 ? `${restaurant.description.slice(0, 25)} ...` : restaurant.description}</p>
+          <p>${
+            restaurant.description.length > 20
+              ? `${restaurant.description.slice(0, 25)} ...`
+              : restaurant.description
+          }</p>
           </div>
           <a class="button button_details" href="${`#/detail/${restaurant.id}`}">See Details</a
       </div>
@@ -41,6 +52,19 @@ const createMenuFoodTemplate = (food) => `<div class="menu_details_foods_item">
   <p>${food.name}</p>
 </div>
 <hr class="hrdetails">
+`;
+const createReviewsTemplate = (review) => `<div class="review_details_item">
+<div class="review_details_image">
+<img src=${avatarIcon} alt="avatar-icon">
+<h3>${review.name}</h3></div>
+  
+  <div class="review_details_desc">
+   
+  <p>${review.review}</p>
+  </div>
+ 
+</div>
+
 `;
 
 const createMenuDrinkTemplate = (drink) => `<div class="menu_details_foods_item">
@@ -55,12 +79,14 @@ const createDetail = (restaurant) => `
       <header class="header header__details">
         <div class="header__inner container">
           <div class="details__nav">
-            <button class="button_back"><img src=${arrowIcon} alt="arrow-icon"></button>
+            <a href="#/home" class="button_back"><img src=${arrowIcon} alt="arrow-icon"></a>
           </div>  
         </div>
       </header>
 
-      <div class="details__pic" style="background: url(${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId});background-position: center;">
+      <div class="details__pic" style="background: url(${CONFIG.BASE_IMAGE_URL}medium/${
+  restaurant.pictureId
+});background-position: center;">
         <div class="details__overlay">
             <div class="hero__inner">
               <h1 class="">${restaurant.name}</h1>
@@ -76,24 +102,32 @@ const createDetail = (restaurant) => `
       <main id="mainContent">
         <div class="main_details container">
           <div class="button_list_inner button_details_content ">
-            <button id="button" class="button all active_btn" >Menu</button>
-            <button id="button" class="button all " >About</button>
-            <button id="button" class="button all " >Reviews</button>
+            <button id="button" class="button all active_btn" data-name="menu">Menu</button>
+            <button id="button" class="button all " data-name="about">About</button>
           </div>
-          <div clas="menu_details container">
-            <div class="menu_details_categories container">
-              <img src=${foodIcon} alt="food-icon">
-              <h2>Food</h2>
+          <div class="menu_content details_content hide active" data-name="menu">
+            <div clas="menu_details container">
+              <div class="menu_details_categories container">
+                <img src=${foodIcon} alt="food-icon">
+                <h2>Food</h2>
+              </div>
+            <div class="menu_details_foods container"></div>
             </div>
-          <div class="menu_details_foods container"></div>
-          </div>
-          <div clas="menu_details container">
-            <div class="menu_details_categories container">
-              <img src=${drinkIcon} alt="drink-icon">
-              <h2>Drink</h2>
+            <div clas="menu_details container">
+              <div class="menu_details_categories container">
+                <img src=${drinkIcon} alt="drink-icon">
+                <h2>Drink</h2>
+              </div>
+              <div class="menu_details_drinks container"></div>
             </div>
-          <div class="menu_details_drinks container"></div>
           </div>
+          <div class="about_content details_content hide" data-name="about">
+         <h2>About</h2>
+         <p>${restaurant.description}</p>
+         <h2>Reviews</h2>
+         <div class="review_details">
+         
+         </div>
         </div>
       </main>
       <footer>
@@ -107,4 +141,5 @@ export {
   createButtonTemplate,
   createMenuFoodTemplate,
   createMenuDrinkTemplate,
+  createReviewsTemplate,
 };

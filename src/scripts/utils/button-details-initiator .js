@@ -1,28 +1,23 @@
-const buttonInitiator = () => {
+const buttonInitiatorDetails = () => {
   const buttons = document.querySelectorAll('#button');
-  const contents = document.querySelectorAll('.content');
+  const contentsDetail = document.querySelectorAll('.details_content');
 
   const handleClick = (e) => {
     e.preventDefault();
     const { name } = e.currentTarget.dataset;
-    console.log(name);
     // Buttons
+    console.log(e.currentTarget.dataset.name);
+
     buttons.forEach((button) => button.classList.remove('active_btn'));
     e.currentTarget.classList.add('active_btn');
-    contents.forEach((content) => content.classList.remove('active'));
+    contentsDetail.forEach((content) => content.classList.remove('active'));
 
-    [...contents]
+    [...contentsDetail]
       .filter((content) => content.dataset.name === name)
       .map((content) => content.classList.add('active'));
   };
 
   buttons.forEach((button) => button.addEventListener('click', handleClick));
-
-  const all = document.querySelector('.all');
-
-  all.addEventListener('click', () => {
-    contents.forEach((content) => content.classList.add('active'));
-  });
 };
 
-export default buttonInitiator;
+export default buttonInitiatorDetails;

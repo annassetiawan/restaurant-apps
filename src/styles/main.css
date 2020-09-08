@@ -70,6 +70,7 @@ nav ul {
   width: 230px;
   height: 100vh;
   position: fixed;
+  z-index: 999;
   right: 0;
   transform: translate(230px, 0);
   transition: transform 0.3s ease-in-out;
@@ -106,9 +107,6 @@ nav ul {
 .header {
   background-color: rgba(18, 18, 18, 1);
   grid-area: header;
-  /* position: fixed;
-  top: 0;
-  width: 100%; */
 }
 
 .header__nav {
@@ -148,7 +146,7 @@ nav ul {
 } */
 
 .hero {
-  min-height: 251px;
+  min-height: 250px;
   width: 100%;
   grid-area: hero;
   background-image: url("../assets/hero.jpg");
@@ -158,7 +156,7 @@ nav ul {
 
 .hero__overlay {
   background-color: rgba(0, 0, 0, 0.4);
-  min-height: 251px;
+  min-height: 250px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -168,8 +166,11 @@ nav ul {
 }
 
 .hero__inner {
-  margin: 0 auto;
+  margin: auto;
   color: #fff;
+  display: flex;
+flex-direction: column;
+gap: 10px;
 }
 
 .hero__title {
@@ -226,8 +227,6 @@ main {
 
 .button:focus {
   outline: 2px solid #ffd700;
-
-  border-radius: 20px;
 }
 
 .button_details {
@@ -310,6 +309,8 @@ main {
   
   gap: 5px;
 }
+
+
 
 .content__name > h1 {
   font-size: 1.2em;

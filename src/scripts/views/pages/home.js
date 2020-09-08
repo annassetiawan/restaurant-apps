@@ -7,7 +7,7 @@ const Home = {
     return `
       <section class="categories container">
       <h2>Location</h2>
-      <p>Browse all the location</p>
+      <p>Choose your location</p>
       <div class="button_list_inner ">
       <button id="button" class="button all active_btn" >All</button>
       </div>
@@ -15,7 +15,7 @@ const Home = {
     <hr class="container">
     <section class="container">
       <h2>Restaurant</h2>
-      <p>List all of available restaurants</p>
+      <p>Lets find some places to eat</p>
       <div class="section_list" id="restaurants">
        
           <div class="loader"></div>
@@ -33,7 +33,6 @@ const Home = {
     loader.classList.add('hide');
     console.log(restaurants);
     const buttonContainer = document.querySelector('.button_list_inner');
-
     restaurants.forEach((restaurant) => {
       restaurantContainer.innerHTML += createMenuItemTemplate(restaurant);
     });
@@ -46,5 +45,4 @@ const Home = {
     buttonInitiator();
   },
 };
-
 export default Home;
