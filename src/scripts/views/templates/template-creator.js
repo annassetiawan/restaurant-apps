@@ -2,12 +2,32 @@
 import CONFIG from '../../globals/config';
 import locationIcon from '../../../assets/location.svg';
 import starIcon from '../../../assets/star.svg';
-import arrowIcon from '../../../assets/leftarrow.svg';
 import foodIcon from '../../../assets/food.svg';
 import drinkIcon from '../../../assets/drink.svg';
 import menuFoodIcon from '../../../assets/menufood.svg';
 import menuDrinkIcon from '../../../assets/menudrink.svg';
 import avatarIcon from '../../../assets/avatar.svg';
+
+const createHomeDetailTemplate = () => `
+<section class="categories container">
+    <h2>Location</h2>
+    <p>Choose your location</p>
+    <div class="button_list_inner ">
+    <button id="button" class="button all active_btn" >All</button>
+    </div>
+  </section>
+  <hr class="container">
+  <section class="container">
+    <h2>Restaurant</h2>
+    <p>Lets find some places to eat</p>
+    <div class="section_list" id="restaurants">
+     
+     
+    
+    </div>
+   
+  </section>
+`;
 
 const createButtonTemplate = (city) => ` 
 <button id="button" class="button" data-name=${city}>${city}</button>`;
@@ -75,31 +95,7 @@ const createMenuDrinkTemplate = (drink) => `<div class="menu_details_foods_item"
 `;
 
 const createDetail = (restaurant) => `
-<a href="#mainContent" class="skip-link">Menuju ke konten</a>
-      <header class="header header__details">
-        <div class="header__inner container">
-          <div class="details__nav">
-            <a href="#/home" class="button_back"><img src=${arrowIcon} alt="arrow-icon"></a>
-          </div>  
-        </div>
-      </header>
 
-      <div class="details__pic" style="background: url(${CONFIG.BASE_IMAGE_URL}medium/${
-  restaurant.pictureId
-});background-position: center;">
-        <div class="details__overlay">
-            <div class="hero__inner">
-              <h1 class="">${restaurant.name}</h1>
-              <p>${restaurant.address}</p>
-              <p>Categories : ${restaurant.categories.map((category) => category.name)}</p>
-              <div class="content__rating content__rating__details">
-                <img src=${starIcon} alt="star-icon">
-                <span>${restaurant.rating}</span>
-              </div>
-            </div>
-        </div>
-      </div>
-      <main id="mainContent">
         <div class="main_details container">
           <div class="button_list_inner button_details_content ">
             <button id="button" class="button all active_btn" data-name="menu">Menu</button>
@@ -129,10 +125,7 @@ const createDetail = (restaurant) => `
          
          </div>
         </div>
-      </main>
-      <footer>
-        <p>Copyright © 2020 - Hunger App</p>
-      </footer>
+      
     `;
 
 export {
@@ -142,4 +135,5 @@ export {
   createMenuFoodTemplate,
   createMenuDrinkTemplate,
   createReviewsTemplate,
+  createHomeDetailTemplate,
 };

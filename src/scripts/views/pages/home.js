@@ -1,37 +1,49 @@
 import RestaurantSource from '../../data/restaurant-source';
-import { createMenuItemTemplate, createButtonTemplate } from '../templates/template-creator';
+import {
+  createMenuItemTemplate,
+  createButtonTemplate,
+  createHomeDetailTemplate,
+} from '../templates/template-creator';
 import buttonInitiator from '../../utils/button-initiator';
 
 const Home = {
   async render() {
-    return `
-      <section class="categories container">
-      <h2>Location</h2>
-      <p>Choose your location</p>
-      <div class="button_list_inner ">
-      <button id="button" class="button all active_btn" >All</button>
+    return `  
+  
+    <div class="hero">
+      <div class="hero__overlay">
+        <div class="hero__inner">
+          <h1 class="hero__title">
+            It’s not just <br />
+            Food, it is an <br />
+            Experience
+          </h1>
+          <p class="hero__tagline">
+            Find your local favourites <br />
+            restaurant
+          </p>
+        </div>
       </div>
-    </section>
-    <hr class="container">
-    <section class="container">
-      <h2>Restaurant</h2>
-      <p>Lets find some places to eat</p>
-      <div class="section_list" id="restaurants">
-       
-          <div class="loader"></div>
-      
-      </div>
-     
-    </section>
-      `;
+    </div>
+    <main id="mainContent">
+    
+    </main>
+    <footer>
+      <p>Copyright © 2020 - Hunger App</p>
+    </footer>
+
+    `;
   },
 
   async afterRender() {
     const restaurants = await RestaurantSource.listRestaurants();
-    const restaurantContainer = document.querySelector('#restaurants');
-    const loader = document.querySelector('.loader');
-    loader.classList.add('hide');
+
+    const content = document.querySelector('#mainContent');
+    // const loader = document.querySelector('.loader');
+    // loader.classList.add('hide');
     console.log(restaurants);
+    content.innerHTML += createHomeDetailTemplate();
+    const restaurantContainer = document.querySelector('#restaurants');
     const buttonContainer = document.querySelector('.button_list_inner');
     restaurants.forEach((restaurant) => {
       restaurantContainer.innerHTML += createMenuItemTemplate(restaurant);

@@ -7,7 +7,7 @@ import App from './views/app';
 const app = new App({
   button: document.querySelector('#hamburger'),
   drawer: document.querySelector('#drawer'),
-  content: document.querySelector('#mainContent'),
+  content: document.querySelector('.rendered_content'),
 });
 
 window.addEventListener('hashchange', () => {
