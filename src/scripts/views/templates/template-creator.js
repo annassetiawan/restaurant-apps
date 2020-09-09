@@ -8,25 +8,38 @@ import menuFoodIcon from '../../../assets/menufood.svg';
 import menuDrinkIcon from '../../../assets/menudrink.svg';
 import avatarIcon from '../../../assets/avatar.svg';
 
+const createFormTemplate = () => `
+
+<div class="form-group-container">
+
+<label for="inputName">Name</label>
+<input id="inputName" type="text" class="form-control" placeholder="Your Name">
+
+
+<label for="inputReview">Reviews</label>
+<textarea id="inputReview" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    
+
+<button id="buttonSave" class="btn btn-success">Submit</button>
+
+</div>
+`;
+
 const createHomeDetailTemplate = () => `
 <section class="categories container">
     <h2>Location</h2>
     <p>Choose your location</p>
-    <div class="button_list_inner ">
+  <div class="button_list_inner ">
     <button id="button" class="button all active_btn" >All</button>
-    </div>
-  </section>
+  </div>
+</section>
   <hr class="container">
-  <section class="container">
-    <h2>Restaurant</h2>
-    <p>Lets find some places to eat</p>
-    <div class="section_list" id="restaurants">
-     
-     
-    
-    </div>
-   
-  </section>
+<section class="container">
+  <h2>Restaurant</h2>
+  <p>Lets find some places to eat</p>
+    <div class="section_list" id="restaurants"></div>
+</section>
 `;
 
 const createButtonTemplate = (city) => ` 
@@ -74,10 +87,13 @@ const createMenuFoodTemplate = (food) => `<div class="menu_details_foods_item">
 <hr class="hrdetails">
 `;
 const createReviewsTemplate = (review) => `<div class="review_details_item">
+<div class="review_details_consumer">
 <div class="review_details_image">
 <img src=${avatarIcon} alt="avatar-icon">
 <h3>${review.name}</h3></div>
-  
+  <p>${review.date}</p>
+</div>
+
   <div class="review_details_desc">
    
   <p>${review.review}</p>
@@ -107,14 +123,14 @@ const createDetail = (restaurant) => `
                 <img src=${foodIcon} alt="food-icon">
                 <h2>Food</h2>
               </div>
-            <div class="menu_details_foods container"></div>
+            <div class="menu_details_foods"></div>
             </div>
             <div clas="menu_details container">
               <div class="menu_details_categories container">
                 <img src=${drinkIcon} alt="drink-icon">
                 <h2>Drink</h2>
               </div>
-              <div class="menu_details_drinks container"></div>
+              <div class="menu_details_drinks"></div>
             </div>
           </div>
           <div class="about_content details_content hide" data-name="about">
@@ -122,6 +138,9 @@ const createDetail = (restaurant) => `
          <p>${restaurant.description}</p>
          <h2>Reviews</h2>
          <div class="review_details">
+         
+         </div>
+         <div class="review_details_forms">
          
          </div>
         </div>
@@ -136,4 +155,5 @@ export {
   createMenuDrinkTemplate,
   createReviewsTemplate,
   createHomeDetailTemplate,
+  createFormTemplate,
 };

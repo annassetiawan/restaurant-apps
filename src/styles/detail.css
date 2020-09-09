@@ -5,14 +5,14 @@
   grid-template-columns: 100%;
   grid-template-rows: 40% 60%;
   grid-template-areas:
-    "detailspic "
-    "main";
+    'detailspic '
+    'main';
   height: 100vh;
   position: relative;
   color: #fff;
 }
 
-.content__rating__details{
+.content__rating__details {
   justify-content: center;
 }
 
@@ -76,9 +76,6 @@
   margin: 20px 0;
 }
 
-
-
-
 /* .content:first-child{
   margin-top: 20px;
 } */
@@ -127,14 +124,13 @@
   gap: 5px;
 }
 
-.content__rating__details > img{
+.content__rating__details > img {
   width: 20px;
 }
 
 .main_details {
   grid-area: main;
   width: 100%;
- 
 }
 
 .menu_details_categories {
@@ -178,37 +174,73 @@
   margin: 10px 0;
 }
 
-.about_content{
+.about_content {
   color: #fff;
   font-size: 12px;
 }
 
-.about_content >h2 {
+.about_content > h2 {
   margin: 20px 0;
   color: #ffd700;
 }
 
-.review_details_image{
+.review_details_image {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.review_details_image > img{
+.review_details_image > img {
   width: 40px;
   margin-right: 20px;
 }
 
-.review_details_item{
-  min-height: 100px;
-  margin: 10px 0;
-padding: 10px;
-border-radius: 10px;
-justify-content: center;
-display: flex;
-flex-direction: column;
-background-color: #121212;
+.review_details_consumer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.review_details_desc{
+.review_details_item {
+  min-height: 100px;
+  margin: 10px 0;
+  padding: 20px 30px;
+  border-radius: 10px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #121212;
+}
+
+.review_details_desc {
   margin-top: 10px;
+}
+
+input[type=text], select, textarea {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+#buttonSave {
+  background-color: #ffd700;
+  color: #040404;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+ 
+}
+
+.form-group-container{
+  border-radius: 5px;
+  background-color: #121212;
+  padding: 20px;
+  margin: 40px 0;
 }

@@ -26,7 +26,7 @@ const Home = {
       </div>
     </div>
     <main id="mainContent">
-    
+    <div class="loader"></div>
     </main>
     <footer>
       <p>Copyright © 2020 - Hunger App</p>
@@ -41,8 +41,10 @@ const Home = {
     const content = document.querySelector('#mainContent');
     // const loader = document.querySelector('.loader');
     // loader.classList.add('hide');
-    console.log(restaurants);
+
     content.innerHTML += createHomeDetailTemplate();
+    const loader = document.querySelector('.loader');
+    loader.classList.add('hide');
     const restaurantContainer = document.querySelector('#restaurants');
     const buttonContainer = document.querySelector('.button_list_inner');
     restaurants.forEach((restaurant) => {

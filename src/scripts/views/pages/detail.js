@@ -3,6 +3,7 @@ import {
   createMenuFoodTemplate,
   createMenuDrinkTemplate,
   createReviewsTemplate,
+  createFormTemplate,
 } from '../templates/template-creator';
 import RestaurantSource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
@@ -31,7 +32,7 @@ const Detail = {
           </div>
         </div>
         <main id="mainContent">
-      
+        <div class="loader"></div>
       </main>
       <footer>
         <p>Copyright © 2020 - Hunger App</p>
@@ -43,12 +44,13 @@ const Detail = {
     const restaurants = await RestaurantSource.detailRestaurant(url.id);
     const content = document.querySelector('#mainContent');
     content.innerHTML += createDetail(restaurants.restaurant);
-    buttonInitiatorDetails();
+    const loader = document.querySelector('.loader');
+    loader.classList.add('hide');
     const menuDetailFood = document.querySelector('.menu_details_foods');
     const menuDetailDrink = document.querySelector('.menu_details_drinks');
     const reviewDetail = document.querySelector('.review_details');
-    const { foods } = restaurants.restaurant.menus;
-    const { drinks } = restaurants.restaurant.menus;
+    const reviewDetailForm = document.querySelector('.review_details_forms');
+    const { foods, drinks } = restaurants.restaurant.menus;
     const { consumerReviews } = restaurants.restaurant;
     foods.forEach((food) => {
       menuDetailFood.innerHTML += createMenuFoodTemplate(food);
@@ -59,6 +61,8 @@ const Detail = {
     consumerReviews.forEach((review) => {
       reviewDetail.innerHTML += createReviewsTemplate(review);
     });
+    reviewDetailForm.innerHTML += createFormTemplate();
+    buttonInitiatorDetails(url.id);
   },
 };
 

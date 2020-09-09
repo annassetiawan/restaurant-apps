@@ -128,6 +128,7 @@ nav ul {
 }
 
 #hamburger {
+  cursor: pointer;
   min-width: 44px;
   min-height: 44px;
   text-decoration: none;
@@ -221,7 +222,7 @@ main {
   background-color: transparent;
   color: #fff;
   font-weight: 500;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
 }
 
