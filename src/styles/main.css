@@ -25,9 +25,19 @@ html {
   background-color: #040404;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 2fr 6fr 1fr;
+  grid-template-rows: 1fr 9fr;
   grid-template-areas:
     "header"
+    "content";
+  height: 100vh;
+}
+
+.rendered_content{
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 2fr 7.5fr .5fr;
+  grid-template-areas:
     "hero"
     "main"
     "footer";
@@ -353,6 +363,7 @@ footer {
   background-color: #121212;
   grid-area: footer;
   position: relative;
+  max-height: 40px;
 }
 
 footer > p {
@@ -369,8 +380,8 @@ footer > p {
   border: 7px solid #040404;
   border-radius: 50%;
   border-top: 3px solid #ffd700;
-  width: 90px;
-  height: 90px;
+  width: 50px;
+  height: 50px;
   animation: spin 1s linear infinite;
   margin: 100px auto;
   grid-column: 1/5;
@@ -389,8 +400,8 @@ footer > p {
   border: 7px solid #040404;
   border-radius: 50%;
   border-top: 3px solid #ffd700;
-  width: 90px;
-  height: 90px;
+  width: 50px;
+  height: 50px;
   animation: spin 1s linear infinite;
   margin: 100px auto;
 }

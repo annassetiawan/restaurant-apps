@@ -11,6 +11,29 @@ import buttonInitiatorDetails from '../../utils/button-details-initiator ';
 import CONFIG from '../../globals/config';
 import starIcon from '../../../assets/star.svg';
 
+const getReview = async () => {
+  const url = UrlParser.parseActiveUrlWithoutCombiner();
+  const restaurants = await RestaurantSource.detailRestaurant(url.id);
+  const reviewDetail = document.querySelector('.review_details');
+  const { consumerReviews } = restaurants.restaurant;
+  consumerReviews.forEach((review) => {
+    reviewDetail.innerHTML += createReviewsTemplate(review);
+  });
+};
+
+const reviewHandler = async (customerReviews) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': '12345',
+    },
+    body: JSON.stringify(customerReviews),
+  };
+  await RestaurantSource.addReviews(options);
+  getReview();
+};
+
 const Detail = {
   async render() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
@@ -42,6 +65,7 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurants = await RestaurantSource.detailRestaurant(url.id);
+    console.log(restaurants);
     const content = document.querySelector('#mainContent');
     content.innerHTML += createDetail(restaurants.restaurant);
     const loader = document.querySelector('.loader');
@@ -62,7 +86,22 @@ const Detail = {
       reviewDetail.innerHTML += createReviewsTemplate(review);
     });
     reviewDetailForm.innerHTML += createFormTemplate();
-    buttonInitiatorDetails(url.id);
+    buttonInitiatorDetails();
+
+    const buttonSave = document.querySelector('#buttonSave');
+    const inputName = document.querySelector('#inputName');
+    const inputReview = document.querySelector('#inputReview');
+
+    buttonSave.addEventListener('click', () => {
+      const customerReviews = {
+        id: url.id,
+        name: inputName.value,
+        review: inputReview.value,
+      };
+
+      reviewHandler(customerReviews);
+    });
+    reviewHandler();
   },
 };
 
