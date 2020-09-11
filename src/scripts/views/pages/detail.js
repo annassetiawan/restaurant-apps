@@ -16,6 +16,10 @@ const getReview = async () => {
   const restaurants = await RestaurantSource.detailRestaurant(url.id);
   const reviewDetail = document.querySelector('.review_details');
   const { consumerReviews } = restaurants.restaurant;
+
+  while (reviewDetail.firstChild) {
+    reviewDetail.firstChild.remove();
+  }
   consumerReviews.forEach((review) => {
     reviewDetail.innerHTML += createReviewsTemplate(review);
   });
@@ -101,7 +105,6 @@ const Detail = {
 
       reviewHandler(customerReviews);
     });
-    reviewHandler();
   },
 };
 
