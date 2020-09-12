@@ -53,6 +53,8 @@ module.exports = {
         {
           src: path.resolve('src/assets/icon.png'),
           sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+          purpose: 'any maskable',
+          ios: true,
         },
       ],
     }),
