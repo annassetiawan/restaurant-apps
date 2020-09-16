@@ -262,3 +262,8 @@ textarea {
   align-items: center;
   justify-content: center;
 }
+
+.nofavourite{
+  color: white;
+  padding: 20px;
+}

@@ -9,20 +9,13 @@ import menuDrinkIcon from '../../../assets/menudrink.svg';
 import avatarIcon from '../../../assets/avatar.svg';
 
 const createFormTemplate = () => `
-
 <div class="form-group-container">
-
 <label for="inputName">Name</label>
 <input id="inputName" type="text" class="form-control" placeholder="Your Name">
-
-
 <label for="inputReview">Reviews</label>
 <textarea id="inputReview" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
     
-
 <button id="buttonSave" class="btn btn-success">Submit</button>
-
 </div>
 `;
 
@@ -43,11 +36,12 @@ const createHomeDetailTemplate = () => `
 `;
 
 const createFavouriteDetailTemplate = () => `
-
 <section class="container">
   <h2>Your Favourite Restaurant</h2>
   <p>Lets find some places to eat</p>
-    <div class="section_list" id="restaurants"></div>
+    <div class="section_list" id="restaurants">
+   
+    </div>
 </section>
 `;
 
@@ -102,14 +96,12 @@ const createReviewsTemplate = (review) => `<div class="review_details_item">
 <h3>${review.name}</h3></div>
   <p>${review.date}</p>
 </div>
-
   <div class="review_details_desc">
    
   <p>${review.review}</p>
   </div>
  
 </div>
-
 `;
 
 const createMenuDrinkTemplate = (drink) => `<div class="menu_details_foods_item">
@@ -120,7 +112,6 @@ const createMenuDrinkTemplate = (drink) => `<div class="menu_details_foods_item"
 `;
 
 const createDetail = (restaurant) => `
-
         <div class="main_details container">
           <div class="button_list_inner button_details_content ">
             <button id="button" class="button all active_btn" data-name="menu">Menu</button>

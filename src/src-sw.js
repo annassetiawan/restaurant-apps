@@ -4,6 +4,7 @@ import { precacheAndRoute } from 'workbox-precaching/precacheAndRoute';
 import { registerRoute } from 'workbox-routing/registerRoute';
 import { NetworkFirst } from 'workbox-strategies/NetworkFirst';
 import { CacheFirst } from 'workbox-strategies/CacheFirst';
+import { StaleWhileRevalidate } from 'workbox-strategies/StaleWhileRevalidate';
 
 precacheAndRoute(self.__WB_MANIFEST);
 registerRoute(
@@ -25,9 +26,12 @@ registerRoute(
   })
 );
 
+registerRoute(/\.(?:png|gif|jpg|jpeg|svg)$/, new CacheFirst());
+
 registerRoute(
-  /\.(?:png|gif|jpg|jpeg|svg)$/,
-  new CacheFirst({
-    cacheName: 'images',
+  ({ url }) =>
+    url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://use.fontawesome.com',
+  new StaleWhileRevalidate({
+    cacheName: 'fonts',
   })
 );

@@ -39,9 +39,11 @@ const Favourite = {
     const loader = document.querySelector('.loader');
     loader.classList.add('hide');
     const restaurantContainer = document.querySelector('#restaurants');
+
     restaurants.forEach((restaurant) => {
       restaurantContainer.innerHTML += createMenuItemTemplate(restaurant);
     });
+    restaurantContainer.firstChild.remove();
   },
 };
 
