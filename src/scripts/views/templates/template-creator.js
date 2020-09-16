@@ -42,6 +42,15 @@ const createHomeDetailTemplate = () => `
 </section>
 `;
 
+const createFavouriteDetailTemplate = () => `
+
+<section class="container">
+  <h2>Your Favourite Restaurant</h2>
+  <p>Lets find some places to eat</p>
+    <div class="section_list" id="restaurants"></div>
+</section>
+`;
+
 const createButtonTemplate = (city) => ` 
 <button id="button" class="button" data-name=${city}>${city}</button>`;
 
@@ -147,6 +156,18 @@ const createDetail = (restaurant) => `
       
     `;
 
+const createLikeButtonTemplate = () => `
+    <button aria-label="like this movie" id="likeButton" class="like">
+       <i class="fa fa-heart-o" aria-hidden="true"></i>
+    </button>
+  `;
+
+const createLikedButtonTemplate = () => `
+    <button aria-label="unlike this movie" id="likeButton" class="like">
+      <i class="fa fa-heart" aria-hidden="true"></i>
+    </button>
+  `;
+
 export {
   createMenuItemTemplate,
   createDetail,
@@ -156,4 +177,7 @@ export {
   createReviewsTemplate,
   createHomeDetailTemplate,
   createFormTemplate,
+  createLikeButtonTemplate,
+  createLikedButtonTemplate,
+  createFavouriteDetailTemplate,
 };

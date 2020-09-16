@@ -10,6 +10,7 @@ import UrlParser from '../../routes/url-parser';
 import buttonInitiatorDetails from '../../utils/button-details-initiator ';
 import CONFIG from '../../globals/config';
 import starIcon from '../../../assets/star.svg';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
 
 const getReview = async () => {
   const url = UrlParser.parseActiveUrlWithoutCombiner();
@@ -58,7 +59,9 @@ const Detail = {
               </div>
           </div>
         </div>
+        <div id="likeButtonContainer"></div>
         <main id="mainContent">
+        
         <div class="loader"></div>
       </main>
       <footer>
@@ -68,18 +71,18 @@ const Detail = {
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurants = await RestaurantSource.detailRestaurant(url.id);
-    console.log(restaurants);
+    const restaurant = await RestaurantSource.detailRestaurant(url.id);
+    console.log(restaurant.id);
     const content = document.querySelector('#mainContent');
-    content.innerHTML += createDetail(restaurants.restaurant);
+    content.innerHTML += createDetail(restaurant.restaurant);
     const loader = document.querySelector('.loader');
     loader.classList.add('hide');
     const menuDetailFood = document.querySelector('.menu_details_foods');
     const menuDetailDrink = document.querySelector('.menu_details_drinks');
     const reviewDetail = document.querySelector('.review_details');
     const reviewDetailForm = document.querySelector('.review_details_forms');
-    const { foods, drinks } = restaurants.restaurant.menus;
-    const { consumerReviews } = restaurants.restaurant;
+    const { foods, drinks } = restaurant.restaurant.menus;
+    const { consumerReviews } = restaurant.restaurant;
     foods.forEach((food) => {
       menuDetailFood.innerHTML += createMenuFoodTemplate(food);
     });
@@ -91,6 +94,18 @@ const Detail = {
     });
     reviewDetailForm.innerHTML += createFormTemplate();
     buttonInitiatorDetails();
+
+    LikeButtonInitiator.init({
+      likeButtonContainer: document.querySelector('#likeButtonContainer'),
+      restaurant: {
+        id: restaurant.restaurant.id,
+        name: restaurant.restaurant.name,
+        city: restaurant.restaurant.city,
+        pictureId: restaurant.restaurant.pictureId,
+        rating: restaurant.restaurant.rating,
+        description: restaurant.restaurant.description,
+      },
+    });
 
     const buttonSave = document.querySelector('#buttonSave');
     const inputName = document.querySelector('#inputName');

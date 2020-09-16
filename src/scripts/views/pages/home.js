@@ -39,8 +39,6 @@ const Home = {
     const restaurants = await RestaurantSource.listRestaurants();
 
     const content = document.querySelector('#mainContent');
-    // const loader = document.querySelector('.loader');
-    // loader.classList.add('hide');
 
     content.innerHTML += createHomeDetailTemplate();
     const loader = document.querySelector('.loader');
