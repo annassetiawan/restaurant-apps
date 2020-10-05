@@ -3,6 +3,8 @@ import '../styles/main.css';
 import '../styles/responsive.css';
 import '../styles/detail.css';
 import App from './views/app';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const app = new App({
   button: document.querySelector('#hamburger'),

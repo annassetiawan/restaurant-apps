@@ -44,9 +44,7 @@ const Detail = {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurants = await RestaurantSource.detailRestaurant(url.id);
     const { restaurant } = restaurants;
-    return `<div class="details__pic" style="background: url(${CONFIG.BASE_IMAGE_URL}medium/${
-      restaurant.pictureId
-    });background-position: center;">
+    return `<div class="details__pic" style="background: url(${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId});background-position: center;">
           <div class="details__overlay">
               <div class="hero__inner">
                 <h1 class="">${restaurant.name}</h1>
@@ -72,26 +70,31 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
-    console.log(restaurant.id);
+
     const content = document.querySelector('#mainContent');
     content.innerHTML += createDetail(restaurant.restaurant);
+
     const loader = document.querySelector('.loader');
     loader.classList.add('hide');
+
+    const reviewDetail = document.querySelector('.review_details');
+
     const menuDetailFood = document.querySelector('.menu_details_foods');
     const menuDetailDrink = document.querySelector('.menu_details_drinks');
-    const reviewDetail = document.querySelector('.review_details');
-    const reviewDetailForm = document.querySelector('.review_details_forms');
     const { foods, drinks } = restaurant.restaurant.menus;
-    const { consumerReviews } = restaurant.restaurant;
     foods.forEach((food) => {
       menuDetailFood.innerHTML += createMenuFoodTemplate(food);
     });
     drinks.forEach((drink) => {
       menuDetailDrink.innerHTML += createMenuDrinkTemplate(drink);
     });
+
+    const { consumerReviews } = restaurant.restaurant;
     consumerReviews.forEach((review) => {
       reviewDetail.innerHTML += createReviewsTemplate(review);
     });
+
+    const reviewDetailForm = document.querySelector('.review_details_forms');
     reviewDetailForm.innerHTML += createFormTemplate();
     buttonInitiatorDetails();
 

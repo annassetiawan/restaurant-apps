@@ -1,29 +1,31 @@
 import FavoriteRestaurantIdb from '../../data/favouriterestaurant-idb';
-import {
-  createMenuItemTemplate,
-  createFavouriteDetailTemplate,
-} from '../templates/template-creator';
+import { createMenuItemTemplate, createFavouriteDetailTemplate, createEmptyItem } from '../templates/template-creator';
+import hero from '../../../assets/hero.jpg';
 
 const Favourite = {
   async render() {
     return `
     <div class="hero">
-    <div class="hero__overlay">
-      <div class="hero__inner">
-        <h1 class="hero__title">
-          It’s not just <br />
-          Food, it is an <br />
-          Experience
-        </h1>
-        <p class="hero__tagline">
-          Find your local favourites <br />
-          restaurant
-        </p>
+    
+    <img class="lazyload" src=${hero} alt="hero">
+      <div class="hero__overlay">
+      
+        <div class="hero__inner">
+        
+          <h1 class="hero__title">
+            It’s not just <br />
+            Food, it is an <br />
+            Experience
+          </h1>
+          <p class="hero__tagline">
+            Find your local favourites <br />
+            restaurant
+          </p>
+        </div>
       </div>
     </div>
-  </div>
   <main id="mainContent">
-  <div class="loader"></div>
+  
   </main>
   <footer>
     <p>Copyright © 2020 - Hunger App</p>
@@ -34,16 +36,17 @@ const Favourite = {
 
   async afterRender() {
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+
     const content = document.querySelector('#mainContent');
     content.innerHTML += createFavouriteDetailTemplate();
-    const loader = document.querySelector('.loader');
-    loader.classList.add('hide');
     const restaurantContainer = document.querySelector('#restaurants');
-
-    restaurants.forEach((restaurant) => {
-      restaurantContainer.innerHTML += createMenuItemTemplate(restaurant);
-    });
-    restaurantContainer.firstChild.remove();
+    if (restaurants.length) {
+      restaurants.forEach((restaurant) => {
+        restaurantContainer.innerHTML += createMenuItemTemplate(restaurant);
+      });
+    } else {
+      restaurantContainer.innerHTML += createEmptyItem();
+    }
   },
 };
 

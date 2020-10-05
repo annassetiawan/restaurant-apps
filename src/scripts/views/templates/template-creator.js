@@ -48,34 +48,28 @@ const createFavouriteDetailTemplate = () => `
 const createButtonTemplate = (city) => ` 
 <button id="button" class="button" data-name=${city}>${city}</button>`;
 
-const createMenuItemTemplate = (restaurant) => `<div class="content hide active" data-name=${
-  restaurant.city
-}>
+const createMenuItemTemplate = (restaurant) => `<div class="content hide active" data-name=${restaurant.city}>
     <div class="content__inner ">
-      <div class="content__img" style="background: url(${CONFIG.BASE_IMAGE_URL}small/${
-  restaurant.pictureId
-});background-position: center;"> 
+      <div class="content__img" >
+      
+        <img class="lazyload" src=${CONFIG.BASE_IMAGE_URL}small/${restaurant.pictureId} alt=${restaurant.name}>
+     
+      
       </div>
       <div class="content__details">
         <div class="content__place">
-        <img src=${locationIcon} alt="location-icon">
+        <img class="lazyload" src=${locationIcon} alt="location-icon">
           <span>${restaurant.city}</span>
         </div>
         <div class="content__rating">
-        <img src=${starIcon} alt="star-icon">
+        <img class="lazyload" src=${starIcon} alt="star-icon">
           <span>${restaurant.rating}</span>
         </div>
         <div class="content__name">
-          <h1>${
-            restaurant.name.length > 9 ? `${restaurant.name.slice(0, 9)} ...` : restaurant.name
-          }</h1>
+          <h1>${restaurant.name.length > 9 ? `${restaurant.name.slice(0, 9)} ...` : restaurant.name}</h1>
         </div>
         <div class="content__desc">
-          <p>${
-            restaurant.description.length > 20
-              ? `${restaurant.description.slice(0, 25)} ...`
-              : restaurant.description
-          }</p>
+          <p>${restaurant.description.length > 20 ? `${restaurant.description.slice(0, 25)} ...` : restaurant.description}</p>
           </div>
           <a class="button button_details" href="${`#/detail/${restaurant.id}`}">See Details</a
       </div>
@@ -84,7 +78,7 @@ const createMenuItemTemplate = (restaurant) => `<div class="content hide active"
   </div>`;
 
 const createMenuFoodTemplate = (food) => `<div class="menu_details_foods_item">
-  <img src=${menuFoodIcon} alt="menu-icon">
+  <img class="lazyload" src=${menuFoodIcon} alt="menu-icon">
   <p>${food.name}</p>
 </div>
 <hr class="hrdetails">
@@ -92,7 +86,7 @@ const createMenuFoodTemplate = (food) => `<div class="menu_details_foods_item">
 const createReviewsTemplate = (review) => `<div class="review_details_item">
 <div class="review_details_consumer">
 <div class="review_details_image">
-<img src=${avatarIcon} alt="avatar-icon">
+<img class="lazyload" src=${avatarIcon} alt="avatar-icon">
 <h3>${review.name}</h3></div>
   <p>${review.date}</p>
 </div>
@@ -105,7 +99,7 @@ const createReviewsTemplate = (review) => `<div class="review_details_item">
 `;
 
 const createMenuDrinkTemplate = (drink) => `<div class="menu_details_foods_item">
-  <img src=${menuDrinkIcon} alt="menu-icon">
+  <img class="lazyload" src=${menuDrinkIcon} alt="menu-icon">
   <p>${drink.name}</p>
 </div>
 <hr class="hrdetails">
@@ -120,14 +114,14 @@ const createDetail = (restaurant) => `
           <div class="menu_content details_content hide active" data-name="menu">
             <div clas="menu_details container">
               <div class="menu_details_categories container">
-                <img src=${foodIcon} alt="food-icon">
+                <img class="lazyload" src=${foodIcon} alt="food-icon">
                 <h2>Food</h2>
               </div>
             <div class="menu_details_foods"></div>
             </div>
             <div clas="menu_details container">
               <div class="menu_details_categories container">
-                <img src=${drinkIcon} alt="drink-icon">
+                <img class="lazyload" src=${drinkIcon} alt="drink-icon">
                 <h2>Drink</h2>
               </div>
               <div class="menu_details_drinks"></div>
@@ -148,16 +142,20 @@ const createDetail = (restaurant) => `
     `;
 
 const createLikeButtonTemplate = () => `
-    <button aria-label="like this movie" id="likeButton" class="like">
+    <button aria-label="like this restaurant" id="likeButton" class="like">
        <i class="fa fa-heart-o" aria-hidden="true"></i>
     </button>
   `;
 
 const createLikedButtonTemplate = () => `
-    <button aria-label="unlike this movie" id="likeButton" class="like">
+    <button aria-label="unlike this restaurant" id="likeButton" class="like">
       <i class="fa fa-heart" aria-hidden="true"></i>
     </button>
   `;
+
+const createEmptyItem = () => `
+<div><h3 class="movie_not_found">No Favourite Movie</h3></div>
+`;
 
 export {
   createMenuItemTemplate,
@@ -171,4 +169,5 @@ export {
   createLikeButtonTemplate,
   createLikedButtonTemplate,
   createFavouriteDetailTemplate,
+  createEmptyItem,
 };

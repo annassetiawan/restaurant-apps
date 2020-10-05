@@ -10,7 +10,7 @@
       min-height: 251px;
       width: 100%;
       grid-area: hero;
-      background-image: url("../assets/hero.jpg");
+      
       background-position: bottom;
       background-size: 100%;
     }
@@ -45,13 +45,14 @@
       min-height: 350px;
       width: 100%;
       grid-area: hero;
-      background-image: url("../assets/hero.jpg");
+     
       background-position: bottom;
       background-size: 80%;
     }
 
-    .hero__overlay{
-      min-height: 350px;
+    .hero__overlay {
+      position: relative;
+      top: -355px;
     }
 
    
@@ -78,13 +79,14 @@
       min-height: 350px;
       width: 100%;
       grid-area: hero;
-      background-image: url("../assets/hero.jpg");
+      
       background-position: center;
       background-size: cover;
     }
 
-    .hero__overlay{
-      min-height: 350px;
+    .hero__overlay {
+      position: relative;
+      top: -355px;
     }
   
     #hamburger {

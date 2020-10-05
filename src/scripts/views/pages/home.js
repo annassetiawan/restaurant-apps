@@ -1,18 +1,22 @@
 import RestaurantSource from '../../data/restaurant-source';
-import {
-  createMenuItemTemplate,
-  createButtonTemplate,
-  createHomeDetailTemplate,
-} from '../templates/template-creator';
+import { createMenuItemTemplate, createButtonTemplate, createHomeDetailTemplate } from '../templates/template-creator';
 import buttonInitiator from '../../utils/button-initiator';
+import hero from '../../../assets/hero.jpg';
 
 const Home = {
   async render() {
     return `  
   
     <div class="hero">
+    <img class="lazyload" src=${hero} 
+    srcset="imgs/hero-small.jpg 480w, imgs/hero-large.jpg 800w"
+    sizes="(max-width: 600px) 480px, 800px"
+    alt="hero">
+    
       <div class="hero__overlay">
+      
         <div class="hero__inner">
+        
           <h1 class="hero__title">
             It’s not just <br />
             Food, it is an <br />

@@ -263,7 +263,8 @@ textarea {
   justify-content: center;
 }
 
-.nofavourite{
+.movie_not_found{
   color: white;
-  padding: 20px;
+  margin: 80px auto;
 }
+

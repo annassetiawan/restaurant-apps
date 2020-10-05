@@ -12,9 +12,7 @@ const buttonInitiatorDetails = () => {
     e.currentTarget.classList.add('active_btn');
     contentsDetail.forEach((content) => content.classList.remove('active'));
 
-    [...contentsDetail]
-      .filter((content) => content.dataset.name === name)
-      .map((content) => content.classList.add('active'));
+    [...contentsDetail].filter((content) => content.dataset.name === name).map((content) => content.classList.add('active'));
   };
 
   buttons.forEach((button) => button.addEventListener('click', handleClick));
