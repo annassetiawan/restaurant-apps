@@ -92,7 +92,7 @@ const createReviewsTemplate = (review) => `<div class="review_details_item">
 </div>
   <div class="review_details_desc">
    
-  <p>${review.review}</p>
+  ${review.review}
   </div>
  
 </div>
@@ -154,7 +154,7 @@ const createLikedButtonTemplate = () => `
   `;
 
 const createEmptyItem = () => `
-<div><h3 class="movie_not_found">No Favourite Movie</h3></div>
+<div class="restaurant_not_found"><h3>No Favourite Restaurant</h3></div>
 `;
 
 export {
