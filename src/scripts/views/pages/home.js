@@ -8,7 +8,7 @@ const Home = {
     return `  
   
     <div class="hero">
-    <img class="lazyload" src=${hero} 
+    <img class="lazyload" data-src=${hero} 
     srcset="imgs/hero-small.jpg 480w, imgs/hero-large.jpg 800w"
     sizes="(max-width: 600px) 480px, 800px"
     alt="hero">
@@ -40,6 +40,14 @@ const Home = {
   },
 
   async afterRender() {
+    let fontAwesomeScriptElement = document.querySelector('script[src="https://use.fontawesome.com/b070c8f1df.js"]');
+
+    if (!fontAwesomeScriptElement) {
+      fontAwesomeScriptElement = document.createElement('script');
+      fontAwesomeScriptElement.src = 'https://use.fontawesome.com/b070c8f1df.js';
+      document.body.appendChild(fontAwesomeScriptElement);
+    }
+
     const restaurants = await RestaurantSource.listRestaurants();
 
     const content = document.querySelector('#mainContent');

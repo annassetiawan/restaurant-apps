@@ -97,6 +97,8 @@ module.exports = {
         }),
       ],
     }),
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerPort: 8085,
+    }),
   ],
 };

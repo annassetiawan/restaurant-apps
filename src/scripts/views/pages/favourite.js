@@ -7,7 +7,7 @@ const Favourite = {
     return `
     <div class="hero">
     
-    <img class="lazyload" src=${hero} alt="hero">
+    <img class="lazyload" data-src=${hero} alt="hero">
       <div class="hero__overlay">
       
         <div class="hero__inner">
@@ -35,6 +35,13 @@ const Favourite = {
   },
 
   async afterRender() {
+    let fontAwesomeScriptElement = document.querySelector('script[src="https://use.fontawesome.com/b070c8f1df.js"]');
+
+    if (!fontAwesomeScriptElement) {
+      fontAwesomeScriptElement = document.createElement('script');
+      fontAwesomeScriptElement.src = 'https://use.fontawesome.com/b070c8f1df.js';
+      document.body.appendChild(fontAwesomeScriptElement);
+    }
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
 
     const content = document.querySelector('#mainContent');

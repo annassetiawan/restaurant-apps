@@ -52,17 +52,17 @@ const createMenuItemTemplate = (restaurant) => `<div class="content hide active"
     <div class="content__inner ">
       <div class="content__img" >
       
-        <img class="lazyload" src=${CONFIG.BASE_IMAGE_URL}small/${restaurant.pictureId} alt=${restaurant.name}>
+        <img class="lazyload" data-src=${CONFIG.BASE_IMAGE_URL}small/${restaurant.pictureId} alt=${restaurant.name}>
      
       
       </div>
       <div class="content__details">
         <div class="content__place">
-        <img class="lazyload" src=${locationIcon} alt="location-icon">
+        <img class="lazyload" data-src=${locationIcon} alt="location-icon">
           <span>${restaurant.city}</span>
         </div>
         <div class="content__rating">
-        <img class="lazyload" src=${starIcon} alt="star-icon">
+        <img class="lazyload" data-src=${starIcon} alt="star-icon">
           <span>${restaurant.rating}</span>
         </div>
         <div class="content__name">
@@ -78,7 +78,7 @@ const createMenuItemTemplate = (restaurant) => `<div class="content hide active"
   </div>`;
 
 const createMenuFoodTemplate = (food) => `<div class="menu_details_foods_item">
-  <img class="lazyload" src=${menuFoodIcon} alt="menu-icon">
+  <img class="lazyload" data-src=${menuFoodIcon} alt="menu-icon">
   <p>${food.name}</p>
 </div>
 <hr class="hrdetails">
@@ -86,7 +86,7 @@ const createMenuFoodTemplate = (food) => `<div class="menu_details_foods_item">
 const createReviewsTemplate = (review) => `<div class="review_details_item">
 <div class="review_details_consumer">
 <div class="review_details_image">
-<img class="lazyload" src=${avatarIcon} alt="avatar-icon">
+<img class="lazyload" data-src=${avatarIcon} alt="avatar-icon">
 <h3>${review.name}</h3></div>
   <p>${review.date}</p>
 </div>
@@ -99,7 +99,7 @@ const createReviewsTemplate = (review) => `<div class="review_details_item">
 `;
 
 const createMenuDrinkTemplate = (drink) => `<div class="menu_details_foods_item">
-  <img class="lazyload" src=${menuDrinkIcon} alt="menu-icon">
+  <img class="lazyload" data-src=${menuDrinkIcon} alt="menu-icon">
   <p>${drink.name}</p>
 </div>
 <hr class="hrdetails">
@@ -114,14 +114,14 @@ const createDetail = (restaurant) => `
           <div class="menu_content details_content hide active" data-name="menu">
             <div clas="menu_details container">
               <div class="menu_details_categories container">
-                <img class="lazyload" src=${foodIcon} alt="food-icon">
+                <img class="lazyload" data-src=${foodIcon} alt="food-icon">
                 <h2>Food</h2>
               </div>
             <div class="menu_details_foods"></div>
             </div>
             <div clas="menu_details container">
               <div class="menu_details_categories container">
-                <img class="lazyload" src=${drinkIcon} alt="drink-icon">
+                <img class="lazyload" data-src=${drinkIcon} alt="drink-icon">
                 <h2>Drink</h2>
               </div>
               <div class="menu_details_drinks"></div>

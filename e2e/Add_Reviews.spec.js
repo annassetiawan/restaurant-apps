@@ -13,14 +13,15 @@ Scenario('add a review on restaurant', async ({ I }) => {
   I.click(locate('.button_details_content .button').last());
   I.seeElement('.form-group-container');
 
-  const nameInput = 'Testing Codecept';
-  const reviewInput = 'test 5';
+  const nameInput = 'codecept';
+  const reviewInput = 'mantapp';
 
   I.fillField('#inputName', nameInput);
   I.fillField('#inputReview', reviewInput);
   I.click('.btn-success');
-
+  I.wait(5);
   const lastReview = locate('.review_details_item .review_details_desc').last();
+
   const lastReviewMessage = await I.grabTextFrom(lastReview);
 
   assert.strictEqual(lastReviewMessage, reviewInput);

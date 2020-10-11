@@ -51,7 +51,7 @@ const Detail = {
                 <p>${restaurant.address}</p>
                 <p>Categories : ${restaurant.categories.map((category) => category.name)}</p>
                 <div class="content__rating content__rating__details">
-                  <img src=${starIcon} alt="star-icon">
+                  <img class="lazyload" data-src=${starIcon} alt="star-icon">
                   <span>${restaurant.rating}</span>
                 </div>
               </div>
@@ -68,6 +68,14 @@ const Detail = {
   },
 
   async afterRender() {
+    let fontAwesomeScriptElement = document.querySelector('script[src="https://use.fontawesome.com/b070c8f1df.js"]');
+
+    if (!fontAwesomeScriptElement) {
+      fontAwesomeScriptElement = document.createElement('script');
+      fontAwesomeScriptElement.src = 'https://use.fontawesome.com/b070c8f1df.js';
+      document.body.appendChild(fontAwesomeScriptElement);
+    }
+
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
 
