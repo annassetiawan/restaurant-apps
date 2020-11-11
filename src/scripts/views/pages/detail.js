@@ -16,12 +16,12 @@ const getReview = async () => {
   const url = UrlParser.parseActiveUrlWithoutCombiner();
   const restaurants = await RestaurantSource.detailRestaurant(url.id);
   const reviewDetail = document.querySelector('.review_details');
-  const { consumerReviews } = restaurants.restaurant;
+  const { customerReviews } = restaurants.restaurant;
 
   while (reviewDetail.firstChild) {
     reviewDetail.firstChild.remove();
   }
-  consumerReviews.forEach((review) => {
+  customerReviews.forEach((review) => {
     reviewDetail.innerHTML += createReviewsTemplate(review);
   });
 };
@@ -97,8 +97,8 @@ const Detail = {
       menuDetailDrink.innerHTML += createMenuDrinkTemplate(drink);
     });
 
-    const { consumerReviews } = restaurant.restaurant;
-    consumerReviews.forEach((review) => {
+    const { customerReviews } = restaurant.restaurant;
+    customerReviews.forEach((review) => {
       reviewDetail.innerHTML += createReviewsTemplate(review);
     });
 
@@ -123,13 +123,13 @@ const Detail = {
     const inputReview = document.querySelector('#inputReview');
 
     buttonSave.addEventListener('click', () => {
-      const customerReviews = {
+      const reviews = {
         id: url.id,
         name: inputName.value,
         review: inputReview.value,
       };
 
-      reviewHandler(customerReviews);
+      reviewHandler(reviews);
     });
   },
 };
